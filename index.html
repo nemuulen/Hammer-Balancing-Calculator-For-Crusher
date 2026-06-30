@@ -16,348 +16,83 @@
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
-  body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--font);
-    line-height:1.4;
-    -webkit-font-smoothing:antialiased;
-  }
-  @media (prefers-reduced-motion: reduce){
-    *{animation:none !important; transition:none !important;}
-  }
-
+  body{background:var(--paper);color:var(--ink);font-family:var(--font);line-height:1.4;-webkit-font-smoothing:antialiased;}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
   .wrap{max-width:1150px;margin:0 auto;padding:32px 20px 80px;}
 
-  header{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    border-bottom:3px solid var(--ink);
-    padding-bottom:18px;
-    margin-bottom:28px;
-    flex-wrap:wrap;
-    gap:12px;
-  }
-  .titleblock h1{
-    font-family:var(--font);
-    font-size:clamp(20px,4vw,30px);
-    font-weight:700;
-    letter-spacing:-0.01em;
-    margin:0 0 4px;
-  }
-  .titleblock .sub{
-    font-size:13px;
-    color:var(--gray);
-  }
-  .header-right{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    flex-wrap:wrap;
-  }
-  .badge{
-    font-family:var(--font);
-    font-size:12px;
-    font-weight:700;
-    letter-spacing:0.03em;
-    border:1.5px solid var(--ink);
-    padding:6px 10px;
-    white-space:nowrap;
-  }
+  header{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:3px solid var(--ink);padding-bottom:18px;margin-bottom:28px;flex-wrap:wrap;gap:12px;}
+  .titleblock h1{font-family:var(--font);font-size:clamp(20px,4vw,30px);font-weight:700;margin:0 0 4px;}
+  .titleblock .sub{font-size:13px;color:var(--gray);}
+  .header-right{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  .badge{font-family:var(--font);font-size:12px;font-weight:700;border:1.5px solid var(--ink);padding:6px 10px;white-space:nowrap;}
 
   .lang-toggle{display:flex;gap:0;border:1.5px solid var(--ink);}
-  .lang-toggle button{
-    font-family:var(--font);
-    font-size:13px;
-    font-weight:700;
-    padding:8px 14px;
-    background:#fff;
-    border:none;
-    border-right:1.5px solid var(--ink);
-    cursor:pointer;
-    color:var(--ink);
-  }
+  .lang-toggle button{font-family:var(--font);font-size:13px;font-weight:700;padding:8px 14px;background:#fff;border:none;border-right:1.5px solid var(--ink);cursor:pointer;color:var(--ink);}
   .lang-toggle button:last-child{border-right:none;}
-  .lang-toggle button.active{
-    background:var(--ink);
-    color:#fff;
-  }
+  .lang-toggle button.active{background:var(--ink);color:#fff;}
 
-  .setup{
-    display:flex;
-    gap:24px;
-    flex-wrap:wrap;
-    align-items:flex-end;
-    margin-bottom:22px;
-    padding:18px;
-    background:#fff;
-    border:1.5px solid var(--ink);
-  }
+  .setup{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-end;margin-bottom:22px;padding:18px;background:#fff;border:1.5px solid var(--ink);}
   .field{display:flex;flex-direction:column;gap:6px;}
-  .field label{
-    font-family:var(--font);
-    font-size:12px;
-    font-weight:700;
-    color:var(--gray);
-  }
+  .field label{font-family:var(--font);font-size:12px;font-weight:700;color:var(--gray);}
   .row-toggle{display:flex;gap:0;border:1.5px solid var(--ink);}
-  .row-toggle button{
-    font-family:var(--font);
-    font-size:14px;
-    font-weight:700;
-    padding:8px 16px;
-    background:#fff;
-    border:none;
-    border-right:1.5px solid var(--ink);
-    cursor:pointer;
-    color:var(--ink);
-  }
+  .row-toggle button{font-family:var(--font);font-size:14px;font-weight:700;padding:8px 16px;background:#fff;border:none;border-right:1.5px solid var(--ink);cursor:pointer;color:var(--ink);}
   .row-toggle button:last-child{border-right:none;}
-  .row-toggle button.active{
-    background:var(--ink);
-    color:#fff;
-  }
-  .field select, .field input[type=number]{
-    font-family:var(--font);
-    font-size:14px;
-    padding:8px 10px;
-    border:1.5px solid var(--ink);
-    background:#fff;
-    color:var(--ink);
-    width:110px;
-  }
+  .row-toggle button.active{background:var(--ink);color:#fff;}
+  .field select,.field input[type=number]{font-family:var(--font);font-size:14px;padding:8px 10px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);width:110px;}
 
-  .actions{
-    display:flex;
-    gap:10px;
-    margin-left:auto;
-    flex-wrap:wrap;
-  }
-  button.btn{
-    font-family:var(--font);
-    font-size:13px;
-    font-weight:700;
-    padding:11px 18px;
-    border:1.5px solid var(--ink);
-    background:var(--ink);
-    color:#fff;
-    cursor:pointer;
-    transition:transform .08s ease, background .15s ease;
-  }
+  .actions{display:flex;gap:10px;margin-left:auto;flex-wrap:wrap;}
+  button.btn{font-family:var(--font);font-size:13px;font-weight:700;padding:11px 18px;border:1.5px solid var(--ink);background:var(--ink);color:#fff;cursor:pointer;transition:transform .08s ease,background .15s ease;}
   button.btn:hover{background:#2b2b2b;}
   button.btn:active{transform:translateY(1px);}
-  button.btn.secondary{
-    background:#fff;
-    color:var(--ink);
-  }
+  button.btn.secondary{background:#fff;color:var(--ink);}
   button.btn.secondary:hover{background:var(--gray-light);}
-  button.btn:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
-    outline:3px solid var(--ink);
-    outline-offset:1px;
-  }
+  button.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--ink);outline-offset:1px;}
 
-  .tolerance{
-    font-family:var(--font);
-    font-size:13px;
-    color:var(--gray);
-    margin-bottom:22px;
-    display:flex;
-    align-items:flex-start;
-    gap:8px;
-  }
+  .tolerance{font-family:var(--font);font-size:13px;color:var(--gray);margin-bottom:22px;display:flex;align-items:flex-start;gap:8px;}
   .tolerance .dot{width:8px;height:8px;background:var(--ink);display:inline-block;margin-top:5px;flex-shrink:0;}
 
-  .input-panel{
-    background:#fff;
-    border:1.5px solid var(--ink);
-    padding:18px;
-    margin-bottom:28px;
-  }
-  .input-panel-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:10px;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .input-panel-head h2{
-    font-family:var(--font);
-    font-size:14px;
-    font-weight:700;
-    margin:0;
-  }
-  .count-readout{
-    font-family:var(--font);
-    font-size:13px;
-    color:var(--gray);
-  }
+  .input-panel{background:#fff;border:1.5px solid var(--ink);padding:18px;margin-bottom:28px;}
+  .input-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px;}
+  .input-panel-head h2{font-family:var(--font);font-size:14px;font-weight:700;margin:0;}
+  .count-readout{font-family:var(--font);font-size:13px;color:var(--gray);}
   .count-readout strong{color:var(--ink);}
-  textarea{
-    width:100%;
-    min-height:160px;
-    font-family:var(--font);
-    font-size:14px;
-    padding:12px;
-    border:1.5px solid var(--ink);
-    background:#fff;
-    color:var(--ink);
-    resize:vertical;
-    line-height:1.6;
-  }
-  .input-hint{
-    font-family:var(--font);
-    font-size:12px;
-    color:var(--gray);
-    margin-top:8px;
-  }
-  .calc-row{
-    display:flex;
-    gap:10px;
-    margin-top:14px;
-    flex-wrap:wrap;
-  }
+  textarea{width:100%;min-height:160px;font-family:var(--font);font-size:14px;padding:12px;border:1.5px solid var(--ink);background:#fff;color:var(--ink);resize:vertical;line-height:1.6;}
+  .input-hint{font-family:var(--font);font-size:12px;color:var(--gray);margin-top:8px;}
+  .calc-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;}
 
   .results-section{margin-top:6px;}
-  .results-section h2{
-    font-family:var(--font);
-    font-size:15px;
-    font-weight:700;
-    border-bottom:1.5px solid var(--ink);
-    padding-bottom:8px;
-    margin-bottom:0;
-  }
+  .results-section h2{font-family:var(--font);font-size:15px;font-weight:700;border-bottom:1.5px solid var(--ink);padding-bottom:8px;margin-bottom:0;}
   .table-scroll{overflow-x:auto;border:1.5px solid var(--ink);border-top:none;}
-  table{
-    width:100%;
-    border-collapse:collapse;
-    font-family:var(--font);
-    font-size:13px;
-    min-width:560px;
-  }
-  thead th{
-    background:var(--ink);
-    color:#fff;
-    text-align:center;
-    padding:9px 10px;
-    font-weight:700;
-    font-size:12px;
-    white-space:nowrap;
-  }
-  tbody td{
-    padding:7px 10px;
-    border-bottom:1px solid #ccc;
-    text-align:center;
-    white-space:nowrap;
-  }
-  tbody td.hcell{
-    color:var(--ink);
-    font-weight:700;
-  }
-  .hammer-id{
-    color:var(--gray);
-    font-weight:400;
-    font-size:11px;
-  }
+  table{width:100%;border-collapse:collapse;font-family:var(--font);font-size:13px;min-width:560px;}
+  thead th{background:var(--ink);color:#fff;text-align:center;padding:9px 10px;font-weight:700;font-size:12px;white-space:nowrap;}
+  tbody td{padding:7px 10px;border-bottom:1px solid #ccc;text-align:center;white-space:nowrap;}
+  tbody td.hcell{color:var(--ink);font-weight:700;}
+  .hammer-id{color:var(--gray);font-weight:400;font-size:11px;}
   tbody tr:nth-child(even){background:#f5f5f5;}
-  tbody tr.total-row td{
-    background:#e6e6e6;
-    font-weight:700;
-    border-top:1.5px solid var(--ink);
-    border-bottom:1px solid var(--ink);
-  }
-  tbody tr.avg-row td{
-    background:#efefef;
-    font-weight:700;
-    border-bottom:1.5px solid var(--ink);
-  }
+  tbody tr.total-row td{background:#e6e6e6;font-weight:700;border-top:1.5px solid var(--ink);border-bottom:1px solid var(--ink);}
+  tbody tr.avg-row td{background:#efefef;font-weight:700;border-bottom:1px solid var(--ink);}
+  tbody tr.delta-row td{background:#f9f9f9;font-weight:700;border-bottom:1.5px solid var(--ink);}
   td.delta.ok{color:var(--ok);font-weight:700;}
   td.delta.warn{color:var(--warn);font-weight:700;}
-  .flag{
-    display:inline-block;
-    font-size:9px;
-    font-weight:700;
-    padding:1px 5px;
-    margin-left:4px;
-    background:var(--warn);
-    color:#fff;
-  }
+  .flag{display:inline-block;font-size:9px;font-weight:700;padding:1px 5px;margin-left:4px;background:var(--warn);color:#fff;}
+  [title]{cursor:help;}
 
   .pairs-table-wrap{margin-top:24px;}
-  .pairs-table-wrap h3{
-    font-family:var(--font);
-    font-size:14px;
-    font-weight:700;
-    margin:0 0 8px;
-  }
+  .pairs-table-wrap h3{font-family:var(--font);font-size:14px;font-weight:700;margin:0 0 8px;}
 
-  .summary{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:1px;
-    background:var(--ink);
-    margin-top:24px;
-    border:1.5px solid var(--ink);
-  }
-  .summary .card{
-    background:#fff;
-    padding:16px 16px 14px;
-  }
-  .summary .card .label{
-    font-family:var(--font);
-    font-size:12px;
-    font-weight:700;
-    color:var(--gray);
-    margin-bottom:6px;
-  }
-  .summary .card .value{
-    font-family:var(--font);
-    font-size:22px;
-    font-weight:700;
-  }
+  .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--ink);margin-top:24px;border:1.5px solid var(--ink);}
+  .summary .card{background:#fff;padding:16px 16px 14px;}
+  .summary .card .label{font-family:var(--font);font-size:12px;font-weight:700;color:var(--gray);margin-bottom:6px;}
+  .summary .card .value{font-family:var(--font);font-size:22px;font-weight:700;}
   .summary .card.status-ok .value{color:var(--ok);}
   .summary .card.status-warn .value{color:var(--warn);}
 
-  .empty-state{
-    border:1.5px dashed #999;
-    padding:32px 20px;
-    text-align:center;
-    font-family:var(--font);
-    font-size:14px;
-    color:var(--gray);
-  }
+  .empty-state{border:1.5px dashed #999;padding:32px 20px;text-align:center;font-family:var(--font);font-size:14px;color:var(--gray);}
+  .error-state{border:1.5px solid var(--warn);background:#fbeaec;padding:14px 16px;font-family:var(--font);font-size:14px;color:var(--warn);margin-bottom:20px;font-weight:700;}
+  .method-note{font-family:var(--font);font-size:12px;color:var(--gray);margin-top:10px;line-height:1.6;}
+  footer{margin-top:50px;padding-top:16px;border-top:1px solid #999;font-family:var(--font);font-size:12px;color:var(--gray);text-align:center;}
 
-  .error-state{
-    border:1.5px solid var(--warn);
-    background:#fbeaec;
-    padding:14px 16px;
-    font-family:var(--font);
-    font-size:14px;
-    color:var(--warn);
-    margin-bottom:20px;
-    font-weight:700;
-  }
-
-  .method-note{
-    font-family:var(--font);
-    font-size:12px;
-    color:var(--gray);
-    margin-top:10px;
-    line-height:1.6;
-  }
-
-  footer{
-    margin-top:50px;
-    padding-top:16px;
-    border-top:1px solid #999;
-    font-family:var(--font);
-    font-size:12px;
-    color:var(--gray);
-    text-align:center;
-  }
-
-  @media (max-width:600px){
+  @media(max-width:600px){
     .setup{flex-direction:column;align-items:stretch;}
     .actions{margin-left:0;width:100%;}
     .actions button{flex:1;}
@@ -368,7 +103,6 @@
 </head>
 <body>
 <div class="wrap">
-
   <header>
     <div class="titleblock">
       <h1 id="t-title">Hammer Balance Calculator</h1>
@@ -391,12 +125,10 @@
         <button type="button" data-rows="4" class="active">4</button>
       </div>
     </div>
-
     <div class="field">
       <label for="rowSize" id="t-rowSizeLabel">Hammers per row</label>
       <input type="number" id="rowSize" min="1" max="60" value="12">
     </div>
-
     <div class="field">
       <label id="t-unitLabel">Unit</label>
       <select id="unitSelect">
@@ -404,7 +136,6 @@
         <option value="g">g</option>
       </select>
     </div>
-
     <div class="actions">
       <button type="button" class="btn" id="sampleBtn">Test with sample</button>
       <button type="button" class="btn secondary" id="clearBtn">Clear</button>
@@ -413,7 +144,7 @@
 
   <div class="tolerance">
     <span class="dot"></span>
-    <span id="t-toleranceNote">Hammers are sorted heaviest to lightest, dealt across rows in a zigzag, then an optimizer swaps hammers between opposite rows (180 degrees apart) to minimize imbalance.</span>
+    <span id="t-toleranceNote">Hammers are balanced across both axes: row totals (opposite rows optimized) and position totals (left-right balance within each row). Hover over any calculated value to see the formula.</span>
   </div>
 
   <div class="input-panel">
@@ -429,7 +160,7 @@
   </div>
 
   <div id="resultsArea">
-    <div class="empty-state" id="emptyStateText">Paste hammer weights above, then click Calculate balance.</div>
+    <div class="empty-state">Paste hammer weights above, then click Calculate balance.</div>
   </div>
 
   <footer id="t-footer">Hammer Balance Calculator — runs entirely in your browser, no data leaves your device</footer>
@@ -437,494 +168,433 @@
 
 <script>
 (function(){
-  const state = {
-    rowCount: 4,
-    rowSize: 12,
-    unit: 'kg',
-    lang: 'en'
-  };
+  var state = {rowCount:4, rowSize:12, unit:'kg', lang:'en'};
+  var TOLERANCE_G = 300;
 
-  const TOLERANCE_G = 300;
-  const MAX_SWAP_ITER = 4000;
-
-  const TXT = {
+  var TXT = {
     en: {
-      title: 'Hammer Balance Calculator',
-      subtitle: 'Ring & granulator crusher rotor balancing — opposite rows optimized for minimum imbalance',
-      tolerance: function(v){ return '±' + v + ' TOLERANCE'; },
-      rowCountLabel: 'Number of rows',
-      rowSizeLabel: 'Hammers per row',
-      unitLabel: 'Unit',
-      sampleBtn: 'Test with sample',
-      clearBtn: 'Clear',
-      toleranceNote: 'Hammers are sorted heaviest to lightest, dealt across rows in a zigzag, then an optimizer swaps hammers between opposite rows (180 degrees apart) to minimize imbalance.',
-      pasteHeading: 'Paste hammer weights',
-      entered: function(n){ return n + ' entered'; },
-      need: 'need',
-      inputHint: 'One weight per line (or separated by spaces/commas). Order does not matter.',
-      calcBtn: 'Calculate balance',
-      emptyState: 'Paste hammer weights above, then click Calculate balance.',
-      errorState: function(have, need, rc, rs){
-        return 'Entered ' + have + ' weight' + (have===1?'':'s') + ', but ' + rc + ' rows × ' + rs + ' hammers needs exactly ' + need + '. Add or remove values, or change the settings above.';
-      },
-      resultsHeading: 'Balance results — opposite rows optimized',
-      colHammerPos: 'Hammer position',
-      colRow: 'Row',
-      colH: function(i){ return 'H' + i; },
-      colTotal: 'Total',
-      colDelta: '+/- vs avg',
-      rowTotal: 'Total',
-      rowAverage: 'Average',
-      pairsHeading: 'Opposite row balance (180°)',
-      pairColA: 'Row A',
-      pairColB: 'Row B',
-      pairColTotalA: 'Total A',
-      pairColTotalB: 'Total B',
-      pairColDiff: 'Difference',
-      cardPerHammerAvg: 'Per-hammer average',
-      cardTargetTotal: 'Target row total',
-      cardTotalWeight: 'Total weight',
-      cardMaxImbalance: 'Max row imbalance',
-      cardMaxPairDiff: 'Max opposite-pair difference',
-      cardStatus: 'Status',
-      statusBalanced: 'BALANCED',
-      statusOver: function(n){ return n + ' OVER TOLERANCE'; },
-      methodNote: 'Method: hammers sorted heaviest to lightest and dealt across rows in a zigzag (1→2→...→N→N→...→2→1...). Then a swap optimizer repeatedly exchanges hammers between the rows with the largest imbalance — prioritizing opposite rows (180° apart) — until no swap improves the result or all rows fall within tolerance.',
-      footer: 'Hammer Balance Calculator — runs entirely in your browser, no data leaves your device',
-      over: 'OVER',
-      oppositeNote3: 'With 3 rows there is no exact 180° opposite, so the optimizer balances all row pairs directly.'
+      title:'Hammer Balance Calculator',
+      subtitle:'Ring & granulator crusher rotor balancing — 2D optimized for minimum imbalance on all axes',
+      tolerance:function(v){return '±'+v+' TOLERANCE';},
+      rowCountLabel:'Number of rows', rowSizeLabel:'Hammers per row', unitLabel:'Unit',
+      sampleBtn:'Test with sample', clearBtn:'Clear',
+      toleranceNote:'Hammers are balanced across both axes: row totals (opposite rows optimized) and position totals (left-right balance within each row). Hover over any calculated value to see the formula.',
+      pasteHeading:'Paste hammer weights',
+      entered:function(n){return n+' entered';}, need:'need',
+      inputHint:'One weight per line (or separated by spaces/commas). Order does not matter.',
+      calcBtn:'Calculate balance',
+      emptyState:'Paste hammer weights above, then click Calculate balance.',
+      errorState:function(h,n,rc,rs){return 'Entered '+h+' weight'+(h===1?'':'s')+', but '+rc+' rows × '+rs+' hammers needs exactly '+n+'. Adjust values or settings above.';},
+      resultsHeading:'Balance results — 2D optimized',
+      colHammerPos:'Position', colRow:'Row',
+      colH:function(i){return 'H'+i;}, colTotal:'Total', colDelta:'+/- vs avg', rowTotal:'Total', rowAverage:'Average',
+      pairsHeading:'Opposite row balance (180°)',
+      pairColA:'Row A', pairColB:'Row B', pairColTotalA:'Total A', pairColTotalB:'Total B', pairColDiff:'Difference',
+      cardPerHammerAvg:'Per-hammer average', cardTargetTotal:'Target row total', cardTotalWeight:'Total weight',
+      cardMaxRowDelta:'Max row +/-', cardMaxPosDelta:'Max position +/-', cardMaxPairDiff:'Max opposite-pair diff',
+      cardStatus:'Status', statusBalanced:'BALANCED', statusOver:function(n){return n+' OVER TOLERANCE';},
+      methodNote:'Method: (1) Zigzag deal across rows to balance row totals. (2) Swap optimizer between opposite rows (180°). (3) Greedy position assignment within each row so position totals are balanced left-to-right. (4) 2D swap optimizer for final fine-tuning across both axes.',
+      footer:'Hammer Balance Calculator — runs entirely in your browser, no data leaves your device',
+      over:'OVER',
+      oppositeNote3:'With 3 rows there is no exact 180° opposite, so the optimizer balances all row pairs directly.'
     },
     mn: {
-      title: 'Алхны Тэнцвэржүүлэх Тооцоолуур',
-      subtitle: 'Бутлуурын ротор алхны тэнцвэржилт — хамгийн бага балансийн зөрүүнд автоматаар тохируулна',
-      tolerance: function(v){ return '±' + v + ' ХҮЛЦЭХ ХЭМЖЭЭ'; },
-      rowCountLabel: 'Эгнээний тоо',
-      rowSizeLabel: 'Эгнээ тус бүрийн алхны тоо',
-      unitLabel: 'Нэгж',
-      sampleBtn: 'Жишээ дата ашиглах',
-      clearBtn: 'Цэвэрлэх',
-      toleranceNote: 'Алхнуудыг хамгийн хүндээс хөнгөн рүү эрэмбэлж, эгнээнүүдэд зигзаг хэлбэрээр хуваарилаад, дараа нь 180 градусын эсрэг эгнээнүүдийн хооронд алхан солих оновчлол хийж балансийн зөрүүг хамгийн бага болгоно.',
-      pasteHeading: 'Алхны жинг буулгана уу',
-      entered: function(n){ return n + ' оруулсан'; },
-      need: 'шаардлагатай',
-      inputHint: 'Мөр тус бүрт нэг жин (эсвэл зай, таслалаар тусгаарлана). Дараалал хамаагүй.',
-      calcBtn: 'Тэнцвэрийг тооцоолох',
-      emptyState: 'Дээр алхны жинг буулгаад "Тэнцвэрийг тооцоолох" товчийг дарна уу.',
-      errorState: function(have, need, rc, rs){
-        return have + ' жин оруулсан байна, гэвч ' + rc + ' эгнээ × ' + rs + ' алхан нь яг ' + need + ' жин шаардана. Утгуудыг нэмэх, хасах, эсвэл дээрх тохиргоог өөрчилнө үү.';
-      },
-      resultsHeading: 'Тэнцвэрийн үр дүн — эсрэг эгнээнүүд оновчлогдсон',
-      colHammerPos: 'Алхны байрлал',
-      colRow: 'Эгнээ',
-      colH: function(i){ return 'А' + i; },
-      colTotal: 'Нийт',
-      colDelta: '+/- дундажтай харьцуулахад',
-      rowTotal: 'Нийт',
-      rowAverage: 'Дундаж',
-      pairsHeading: 'Эсрэг эгнээний баланс (180°)',
-      pairColA: 'Эгнээ A',
-      pairColB: 'Эгнээ B',
-      pairColTotalA: 'Нийт A',
-      pairColTotalB: 'Нийт B',
-      pairColDiff: 'Зөрүү',
-      cardPerHammerAvg: 'Нэг алхны дундаж жин',
-      cardTargetTotal: 'Зорилтот эгнээний нийт жин',
-      cardTotalWeight: 'Нийт жин',
-      cardMaxImbalance: 'Хамгийн их эгнээний дисбаланс',
-      cardMaxPairDiff: 'Эсрэг эгнээний хамгийн их зөрүү',
-      cardStatus: 'Төлөв',
-      statusBalanced: 'ТЭНЦВЭРТЭЙ',
-      statusOver: function(n){ return n + ' ХҮЛЦЭХ ХЭМЖЭЭГ ДАВСАН'; },
-      methodNote: 'Арга: алхнуудыг хамгийн хүндээс хөнгөн рүү эрэмбэлж, эгнээнүүдэд зигзаг хэлбэрээр (1→2→...→N→N→...→2→1...) хуваарилна. Дараа нь алхан солих оновчлол нь хамгийн их зөрүүтэй эгнээнүүдийн (тэргүүн ээлжинд 180° эсрэг эгнээнүүд) хооронд алхнуудыг сольж, цаашид сайжруулах боломжгүй болох эсвэл бүх эгнээ хүлцэх хэмжээнд орох хүртэл давтана.',
-      footer: 'Алхны Тэнцвэржүүлэх Тооцоолуур — таны төхөөрөмж дээр бүрэн ажиллана, өгөгдөл хаашаа ч илгээгдэхгүй',
-      over: 'ДАВСАН',
-      oppositeNote3: '3 эгнээтэй үед яг 180° эсрэг эгнээ байхгүй тул оновчлол нь бүх эгнээ хосуудыг шууд тэнцвэржүүлнэ.'
+      title:'Алхны Тэнцвэржүүлэх Тооцоолуур',
+      subtitle:'Бутлуурын ротор алхны тэнцвэржилт — хамгийн бага балансийн зөрүүнд автоматаар тохируулна',
+      tolerance:function(v){return '±'+v+' ХҮЛЦЭХ ХЭМЖЭЭ';},
+      rowCountLabel:'Эгнээний тоо', rowSizeLabel:'Эгнээ тус бүрийн алхны тоо', unitLabel:'Нэгж',
+      sampleBtn:'Жишээ дата ашиглах', clearBtn:'Цэвэрлэх',
+      toleranceNote:'Алхнуудыг хоёр тэнхлэгээр тэнцвэржүүлнэ: эгнээний нийт жин (эсрэг эгнээнүүд оновчлогдсон) болон байрлалын нийт жин (эгнээ доторх зүүн-баруун тэнцвэр). Тооцоолсон утга дээр хулганыг аваачвал томъёог харуулна.',
+      pasteHeading:'Алхны жинг буулгана уу',
+      entered:function(n){return n+' оруулсан';}, need:'шаардлагатай',
+      inputHint:'Мөр тус бүрт нэг жин (эсвэл зай, таслалаар тусгаарлана). Дараалал хамаагүй.',
+      calcBtn:'Тэнцвэрийг тооцоолох',
+      emptyState:'Дээр алхны жинг буулгаад "Тэнцвэрийг тооцоолох" товчийг дарна уу.',
+      errorState:function(h,n,rc,rs){return h+' жин оруулсан, гэвч '+rc+' эгнээ × '+rs+' алхан нь яг '+n+' жин шаардана.';},
+      resultsHeading:'Тэнцвэрийн үр дүн — 2 тэнхлэгээр оновчлогдсон',
+      colHammerPos:'Байрлал', colRow:'Эгнээ',
+      colH:function(i){return 'А'+i;}, colTotal:'Нийт', colDelta:'+/- дундажтай', rowTotal:'Нийт', rowAverage:'Дундаж',
+      pairsHeading:'Эсрэг эгнээний баланс (180°)',
+      pairColA:'Эгнээ A', pairColB:'Эгнээ B', pairColTotalA:'Нийт A', pairColTotalB:'Нийт B', pairColDiff:'Зөрүү',
+      cardPerHammerAvg:'Нэг алхны дундаж', cardTargetTotal:'Зорилтот эгнээний нийт', cardTotalWeight:'Нийт жин',
+      cardMaxRowDelta:'Хамгийн их эгнээний +/-', cardMaxPosDelta:'Хамгийн их байрлалын +/-', cardMaxPairDiff:'Эсрэг хосын хамгийн их зөрүү',
+      cardStatus:'Төлөв', statusBalanced:'ТЭНЦВЭРТЭЙ', statusOver:function(n){return n+' ХҮЛЦЭХ ХЭМЖЭЭГ ДАВСАН';},
+      methodNote:'Арга: (1) Эгнээнүүдэд зигзаг хуваарилалт. (2) Эсрэг эгнээ хоорондын алхан солих оновчлол (180°). (3) Эгнээ доторх байрлалын оновчлол (зүүн-баруун тэнцвэр). (4) 2 тэнхлэгийн эцсийн оновчлол.',
+      footer:'Алхны Тэнцвэржүүлэх Тооцоолуур — таны төхөөрөмж дээр бүрэн ажиллана',
+      over:'ДАВСАН',
+      oppositeNote3:'3 эгнээтэй үед яг 180° эсрэг эгнээ байхгүй тул бүх хосуудыг шууд тэнцвэржүүлнэ.'
     }
   };
 
-  const rowToggle = document.getElementById('rowToggle');
-  const rowSizeInput = document.getElementById('rowSize');
-  const unitSelect = document.getElementById('unitSelect');
-  const toleranceBadge = document.getElementById('toleranceBadge');
-  const weightInput = document.getElementById('weightInput');
-  const neededCountEl = document.getElementById('neededCount');
-  const resultsArea = document.getElementById('resultsArea');
-  const langToggle = document.getElementById('langToggle');
+  var els = {};
+  ['rowToggle','rowSize','unitSelect','toleranceBadge','weightInput','neededCount','resultsArea','langToggle',
+   't-title','t-subtitle','t-rowCountLabel','t-rowSizeLabel','t-unitLabel','sampleBtn','clearBtn',
+   't-toleranceNote','t-pasteHeading','t-need','t-inputHint','calcBtn','t-footer','t-entered'].forEach(function(id){
+    els[id] = document.getElementById(id);
+  });
 
-  function t(){ return TXT[state.lang]; }
+  function t(){return TXT[state.lang];}
+  function toG(n){return state.unit==='kg'?n*1000:n;}
+  function fromG(g){return state.unit==='kg'?g/1000:g;}
+  function fmt(n){if(n==null||isNaN(n))return '—';return n.toFixed(state.unit==='kg'?2:0);}
+  function fmtD(n){if(n==null||isNaN(n))return '—';return n.toFixed(state.unit==='kg'?3:0);}
+  function fmtSign(n){return (n>=0?'+':'')+fmtD(n);}
 
-  function toGrams(n){ return state.unit === 'kg' ? n*1000 : n; }
-  function fromGrams(g){ return state.unit === 'kg' ? g/1000 : g; }
-  function fmt(n){
-    if(n === null || n === undefined || isNaN(n)) return '—';
-    return n.toFixed(state.unit==='kg' ? 2 : 0);
-  }
-  function fmtDelta(n){
-    if(n === null || n === undefined || isNaN(n)) return '—';
-    return n.toFixed(state.unit==='kg' ? 3 : 0);
-  }
-
-  function applyStaticText(){
-    document.getElementById('t-title').textContent = t().title;
-    document.getElementById('t-subtitle').textContent = t().subtitle;
-    document.getElementById('t-rowCountLabel').textContent = t().rowCountLabel;
-    document.getElementById('t-rowSizeLabel').textContent = t().rowSizeLabel;
-    document.getElementById('t-unitLabel').textContent = t().unitLabel;
-    document.getElementById('sampleBtn').textContent = t().sampleBtn;
-    document.getElementById('clearBtn').textContent = t().clearBtn;
-    document.getElementById('t-toleranceNote').textContent = t().toleranceNote;
-    document.getElementById('t-pasteHeading').textContent = t().pasteHeading;
-    document.getElementById('t-need').textContent = t().need;
-    document.getElementById('t-inputHint').textContent = t().inputHint;
-    document.getElementById('calcBtn').textContent = t().calcBtn;
-    document.getElementById('t-footer').textContent = t().footer;
-    updateToleranceBadge();
-    updateCountReadout();
+  function applyText(){
+    els['t-title'].textContent=t().title;
+    els['t-subtitle'].textContent=t().subtitle;
+    els['t-rowCountLabel'].textContent=t().rowCountLabel;
+    els['t-rowSizeLabel'].textContent=t().rowSizeLabel;
+    els['t-unitLabel'].textContent=t().unitLabel;
+    els['sampleBtn'].textContent=t().sampleBtn;
+    els['clearBtn'].textContent=t().clearBtn;
+    els['t-toleranceNote'].textContent=t().toleranceNote;
+    els['t-pasteHeading'].textContent=t().pasteHeading;
+    els['t-need'].textContent=t().need;
+    els['t-inputHint'].textContent=t().inputHint;
+    els['calcBtn'].textContent=t().calcBtn;
+    els['t-footer'].textContent=t().footer;
+    updBadge(); updCount();
   }
 
-  function updateToleranceBadge(){
-    const display = state.unit === 'kg' ? '0.300 kg' : '300 g';
-    toleranceBadge.textContent = t().tolerance(display);
+  function updBadge(){
+    var d=state.unit==='kg'?'0.300 kg':'300 g';
+    els['toleranceBadge'].textContent=t().tolerance(d);
+  }
+  function updNeeded(){
+    els['neededCount'].textContent=state.rowCount*state.rowSize;
+    updCount();
+  }
+  function parseW(raw){
+    return raw.split(/[\s,;]+/).map(function(s){return s.trim();}).filter(function(s){return s.length>0;})
+      .map(parseFloat).filter(function(n){return !isNaN(n);});
+  }
+  function updCount(){
+    els['t-entered'].textContent=t().entered(parseW(els['weightInput'].value).length);
   }
 
-  function updateNeeded(){
-    const needed = state.rowCount * state.rowSize;
-    neededCountEl.textContent = needed;
-    updateCountReadout();
+  // ========== ALGORITHM ==========
+
+  function rSum(row){return row.reduce(function(a,b){return a+b.g;},0);}
+
+  function getOppPairs(rc){
+    var p=[];
+    if(rc%2===0){var h=rc/2;for(var i=0;i<h;i++)p.push([i,i+h]);}
+    else{for(var i=0;i<rc;i++)for(var j=i+1;j<rc;j++)p.push([i,j]);}
+    return p;
   }
 
-  function parseWeights(raw){
-    return raw
-      .split(/[\s,;]+/)
-      .map(s => s.trim())
-      .filter(s => s.length > 0)
-      .map(s => parseFloat(s))
-      .filter(n => !isNaN(n));
-  }
-
-  function updateCountReadout(){
-    const parsed = parseWeights(weightInput.value);
-    document.getElementById('t-entered').textContent = t().entered(parsed.length);
-  }
-
-  function distributeZigzag(sortedDesc, rowCount){
-    const rows = Array.from({length: rowCount}, () => []);
-    let r = 0, dir = 1;
-    for(let i=0;i<sortedDesc.length;i++){
-      rows[r].push(sortedDesc[i]);
-      r += dir;
-      if(r === rowCount){ r = rowCount-1; dir = -1; }
-      else if(r === -1){ r = 0; dir = 1; }
+  // Step 1: Zigzag across rows
+  function zigzagRows(sorted,rc){
+    var rows=[];for(var i=0;i<rc;i++)rows.push([]);
+    var r=0,dir=1;
+    for(var i=0;i<sorted.length;i++){
+      rows[r].push(sorted[i]);
+      r+=dir;
+      if(r===rc){r=rc-1;dir=-1;}
+      else if(r===-1){r=0;dir=1;}
     }
     return rows;
   }
 
-  function getOppositePairs(rowCount){
-    const pairs = [];
-    if(rowCount % 2 === 0){
-      const half = rowCount/2;
-      for(let i=0;i<half;i++){
-        pairs.push([i, i+half]);
-      }
-    } else {
-      for(let i=0;i<rowCount;i++){
-        for(let j=i+1;j<rowCount;j++){
-          pairs.push([i,j]);
+  // Step 2: Swap optimizer for row totals (opposite rows priority)
+  function optRows(rows,pairs){
+    var totals=rows.map(rSum);
+    var improved=true,iter=0;
+    while(improved&&iter<3000){
+      improved=false;iter++;
+      var wp=null,wd=-1;
+      pairs.forEach(function(p){var d=Math.abs(totals[p[0]]-totals[p[1]]);if(d>wd){wd=d;wp=p;}});
+      if(!wp||wd<=TOLERANCE_G){
+        wp=null;wd=-1;
+        for(var i=0;i<rows.length;i++)for(var j=i+1;j<rows.length;j++){
+          var d=Math.abs(totals[i]-totals[j]);if(d>wd){wd=d;wp=[i,j];}
         }
+        if(!wp||wd<=TOLERANCE_G)break;
+      }
+      var a=wp[0],b=wp[1],bs=null,bd=wd;
+      for(var i=0;i<rows[a].length;i++)for(var j=0;j<rows[b].length;j++){
+        var nA=totals[a]-rows[a][i].g+rows[b][j].g;
+        var nB=totals[b]-rows[b][j].g+rows[a][i].g;
+        var nd=Math.abs(nA-nB);
+        if(nd<bd){bd=nd;bs={i:i,j:j,nA:nA,nB:nB};}
+      }
+      if(bs){
+        var tmp=rows[a][bs.i];rows[a][bs.i]=rows[b][bs.j];rows[b][bs.j]=tmp;
+        totals[a]=bs.nA;totals[b]=bs.nB;improved=true;
       }
     }
-    return pairs;
-  }
-
-  function rowSum(row){
-    return row.reduce(function(a,b){ return a + (typeof b === 'object' ? b.g : b); },0);
-  }
-
-  function optimizeBySwapping(rows, oppositePairs){
-    let totals = rows.map(rowSum);
-    let improved = true;
-    let iter = 0;
-
-    function pairDiff(a,b){
-      return Math.abs(totals[a]-totals[b]);
-    }
-
-    while(improved && iter < MAX_SWAP_ITER){
-      improved = false;
-      iter++;
-
-      let worstPair = null;
-      let worstDiff = -1;
-      oppositePairs.forEach(function(p){
-        var d = pairDiff(p[0],p[1]);
-        if(d > worstDiff){ worstDiff = d; worstPair = p; }
-      });
-
-      if(!worstPair || worstDiff <= TOLERANCE_G){
-        let allWorstPair = null;
-        let allWorstDiff = -1;
-        for(let i=0;i<rows.length;i++){
-          for(let j=i+1;j<rows.length;j++){
-            const d = pairDiff(i,j);
-            if(d > allWorstDiff){ allWorstDiff = d; allWorstPair = [i,j]; }
-          }
-        }
-        if(!allWorstPair || allWorstDiff <= TOLERANCE_G) break;
-        worstPair = allWorstPair;
-        worstDiff = allWorstDiff;
-      }
-
-      const a = worstPair[0], b = worstPair[1];
-      let bestSwap = null;
-      let bestNewDiff = worstDiff;
-
-      for(let i=0;i<rows[a].length;i++){
-        for(let j=0;j<rows[b].length;j++){
-          const wa = rows[a][i];
-          const wb = rows[b][j];
-          const newTotalA = totals[a] - wa + wb;
-          const newTotalB = totals[b] - wb + wa;
-          const newDiff = Math.abs(newTotalA - newTotalB);
-          if(newDiff < bestNewDiff){
-            bestNewDiff = newDiff;
-            bestSwap = {i:i,j:j,newTotalA:newTotalA,newTotalB:newTotalB};
-          }
-        }
-      }
-
-      if(bestSwap){
-        const tmp = rows[a][bestSwap.i];
-        rows[a][bestSwap.i] = rows[b][bestSwap.j];
-        rows[b][bestSwap.j] = tmp;
-        totals[a] = bestSwap.newTotalA;
-        totals[b] = bestSwap.newTotalB;
-        improved = true;
-      }
-    }
-
     return rows;
   }
 
-  function showEmptyState(){
-    resultsArea.innerHTML = '<div class="empty-state">' + t().emptyState + '</div>';
+  // Step 3: Position balance - greedy assignment within each row
+  // For each row, assign its hammers to positions so that position totals
+  // (sum across all rows at each position) are as balanced as possible.
+  function optPositions(rows){
+    var rc=rows.length,ps=rows[0].length;
+    var posTotals=new Array(ps);for(var i=0;i<ps;i++)posTotals[i]=0;
+    var newRows=[];
+
+    for(var r=0;r<rc;r++){
+      // Sort this row's hammers by weight descending
+      var hammers=rows[r].slice().sort(function(a,b){return b.g-a.g;});
+      var assigned=new Array(ps);
+      var used=new Array(ps);for(var i=0;i<ps;i++)used[i]=false;
+
+      // Assign heaviest hammer to position with smallest running total,
+      // next heaviest to next smallest, etc.
+      for(var h=0;h<hammers.length;h++){
+        var bestPos=-1,bestTotal=Infinity;
+        for(var p=0;p<ps;p++){
+          if(!used[p]&&posTotals[p]<bestTotal){
+            bestTotal=posTotals[p];bestPos=p;
+          }
+        }
+        assigned[bestPos]=hammers[h];
+        used[bestPos]=true;
+        posTotals[bestPos]+=hammers[h].g;
+      }
+      newRows.push(assigned);
+    }
+    return newRows;
+  }
+
+  // Step 4: 2D swap optimizer - tries swaps within same row (improves position balance
+  // without affecting row totals) and accepts if max position delta decreases.
+  function opt2D(rows){
+    var rc=rows.length,ps=rows[0].length;
+    function getPosTotals(){
+      var pt=new Array(ps);for(var i=0;i<ps;i++)pt[i]=0;
+      for(var r=0;r<rc;r++)for(var p=0;p<ps;p++)pt[p]+=rows[r][p].g;
+      return pt;
+    }
+    function maxPosDelta(pt){
+      var avg=0;for(var i=0;i<ps;i++)avg+=pt[i];avg/=ps;
+      var mx=0;for(var i=0;i<ps;i++){var d=Math.abs(pt[i]-avg);if(d>mx)mx=d;}
+      return mx;
+    }
+
+    var improved=true,iter=0;
+    while(improved&&iter<2000){
+      improved=false;iter++;
+      var pt=getPosTotals();
+      var curMax=maxPosDelta(pt);
+
+      // Try within-row swaps (doesn't change row totals, only position totals)
+      for(var r=0;r<rc&&!improved;r++){
+        for(var i=0;i<ps&&!improved;i++){
+          for(var j=i+1;j<ps&&!improved;j++){
+            var wi=rows[r][i].g,wj=rows[r][j].g;
+            if(wi===wj)continue;
+            var newPt=pt.slice();
+            newPt[i]=newPt[i]-wi+wj;
+            newPt[j]=newPt[j]-wj+wi;
+            var newMax=maxPosDelta(newPt);
+            if(newMax<curMax){
+              var tmp=rows[r][i];rows[r][i]=rows[r][j];rows[r][j]=tmp;
+              improved=true;
+            }
+          }
+        }
+      }
+    }
+    return rows;
+  }
+
+  function showEmpty(){
+    els['resultsArea'].innerHTML='<div class="empty-state">'+t().emptyState+'</div>';
   }
 
   function calculate(){
-    const raw = weightInput.value;
-    const parsed = parseWeights(raw);
-    const needed = state.rowCount * state.rowSize;
-
-    if(parsed.length === 0){
-      showEmptyState();
+    var raw=els['weightInput'].value;
+    var parsed=parseW(raw);
+    var needed=state.rowCount*state.rowSize;
+    if(parsed.length===0){showEmpty();return;}
+    if(parsed.length!==needed){
+      els['resultsArea'].innerHTML='<div class="error-state">'+t().errorState(parsed.length,needed,state.rowCount,state.rowSize)+'</div>';
       return;
     }
 
-    if(parsed.length !== needed){
-      resultsArea.innerHTML = '<div class="error-state">' + t().errorState(parsed.length, needed, state.rowCount, state.rowSize) + '</div>';
-      return;
+    var hammers=parsed.map(function(v,i){return{g:toG(v),idx:i+1};});
+    hammers.sort(function(a,b){return b.g-a.g;});
+
+    var oppPairs=getOppPairs(state.rowCount);
+    var rows=zigzagRows(hammers,state.rowCount);
+    rows=optRows(rows,oppPairs);
+    rows=optPositions(rows);
+    rows=opt2D(rows);
+
+    var rowTotals=rows.map(rSum);
+    var overallSum=0;for(var i=0;i<hammers.length;i++)overallSum+=hammers[i].g;
+    var overallAvg=overallSum/hammers.length;
+    var rowTarget=overallAvg*state.rowSize;
+    var posTarget=overallSum/state.rowSize;
+
+    var rc=state.rowCount,ps=state.rowSize;
+
+    // Position totals
+    var posTotals=[];
+    for(var p=0;p<ps;p++){
+      var s=0;for(var r=0;r<rc;r++)s+=rows[r][p].g;
+      posTotals.push(s);
     }
 
-    // Build hammer objects carrying original entry index
-    const hammers = parsed.map(function(val, i){ return {g: toGrams(val), idx: i+1}; });
-    hammers.sort(function(a,b){ return b.g - a.g; });
-    let rows = distributeZigzag(hammers, state.rowCount);
-    const oppositePairs = getOppositePairs(state.rowCount);
-    rows = optimizeBySwapping(rows, oppositePairs);
+    // Stats
+    var maxRowDelta=0,maxPosDelta=0,flagCount=0;
+    for(var r=0;r<rc;r++){var d=Math.abs(rowTotals[r]-rowTarget);if(d>maxRowDelta)maxRowDelta=d;if(d>TOLERANCE_G)flagCount++;}
+    for(var p=0;p<ps;p++){var d=Math.abs(posTotals[p]-posTarget);if(d>maxPosDelta)maxPosDelta=d;if(d>TOLERANCE_G)flagCount++;}
 
-    const rowTotals = rows.map(rowSum);
-    const allGrams = hammers.map(function(h){ return h.g; });
-    const overallSum = allGrams.reduce(function(a,b){ return a+b; },0);
-    const overallAvg = overallSum / hammers.length;
-    const rowAvgTarget = overallAvg * state.rowSize;
-
-    let maxAbsDelta = 0;
-    let flaggedRows = 0;
-
-    // Compute row deltas for summary cards
-    rows.forEach(function(row, idx){
-      const total = rowTotals[idx];
-      const deltaG = total - rowAvgTarget;
-      const isWarn = Math.abs(deltaG) > TOLERANCE_G;
-      if(isWarn) flaggedRows++;
-      maxAbsDelta = Math.max(maxAbsDelta, Math.abs(deltaG));
+    var maxPairDiff=0;
+    oppPairs.forEach(function(pr){
+      var d=Math.abs(rowTotals[pr[0]]-rowTotals[pr[1]]);
+      if(d>maxPairDiff)maxPairDiff=d;
     });
 
-    // Transposed table: page-rows = hammer positions H1..Hn, page-columns = crusher rows.
-    // Each cell shows #originalIndex and weight. +/- column = position total - avg position total.
-    let headerCols = '';
-    for(let r=0;r<state.rowCount;r++){
-      headerCols += '<th>' + t().colRow + ' ' + (r+1) + ' (' + state.unit + ')</th>';
-    }
+    // ===== BUILD TABLE =====
+    var hdr='<th>'+t().colHammerPos+'</th>';
+    for(var r=0;r<rc;r++)hdr+='<th>'+t().colRow+' '+(r+1)+' ('+state.unit+')</th>';
+    hdr+='<th>'+t().colTotal+' ('+state.unit+')</th><th>'+t().colDelta+'</th><th>'+t().rowAverage+' ('+state.unit+')</th>';
 
-    const avgPosTotal = overallSum / state.rowSize;
+    var body='';
+    for(var p=0;p<ps;p++){
+      var posAvg=posTotals[p]/rc;
+      var posDelta=posTotals[p]-posTarget;
+      var isPosWarn=Math.abs(posDelta)>TOLERANCE_G;
 
-    let bodyRows = '';
-    for(let h=0;h<state.rowSize;h++){
-      let posSum = 0;
-      for(let r=0;r<state.rowCount;r++){ posSum += rows[r][h].g; }
-      const posAvg = posSum / state.rowCount;
-      const posDelta = posSum - avgPosTotal;
-      const isPosWarn = Math.abs(posDelta) > TOLERANCE_G;
-      const posDeltaDisplay = (posDelta >= 0 ? '+' : '') + fmtDelta(fromGrams(posDelta));
-
-      let cells = '';
-      for(let r=0;r<state.rowCount;r++){
-        const hObj = rows[r][h];
-        cells += '<td class="hcell"><span class="hammer-id">#' + hObj.idx + '</span> ' + fmt(fromGrams(hObj.g)) + '</td>';
+      var cells='';
+      for(var r=0;r<rc;r++){
+        var h=rows[r][p];
+        cells+='<td class="hcell" title="#'+h.idx+': '+fmt(fromG(h.g))+' '+state.unit+'"><span class="hammer-id">#'+h.idx+'</span> '+fmt(fromG(h.g))+'</td>';
       }
 
-      bodyRows += '<tr>' +
-        '<td>' + t().colH(h+1) + '</td>' +
-        cells +
-        '<td>' + fmt(fromGrams(posSum)) + '</td>' +
-        '<td class="delta ' + (isPosWarn?'warn':'ok') + '">' + posDeltaDisplay + (isPosWarn?'<span class="flag">' + t().over + '</span>':'') + '</td>' +
-        '<td>' + fmtDelta(fromGrams(posAvg)) + '</td>' +
+      var posTotalF=fmt(fromG(posTotals[p]));
+      var posTargetF=fmt(fromG(posTarget));
+      var posDeltaF=fmtSign(fromG(posDelta));
+      var posAvgF=fmtD(fromG(posAvg));
+
+      body+='<tr>'+
+        '<td>'+t().colH(p+1)+'</td>'+cells+
+        '<td title="'+t().colRow+' 1-'+rc+' sum">'+posTotalF+'</td>'+
+        '<td class="delta '+(isPosWarn?'warn':'ok')+'" title="'+posTotalF+' - '+posTargetF+' = '+posDeltaF+'">'+posDeltaF+(isPosWarn?'<span class="flag">'+t().over+'</span>':'')+'</td>'+
+        '<td title="'+posTotalF+' / '+rc+' = '+posAvgF+'">'+posAvgF+'</td>'+
         '</tr>';
     }
 
-    // Row totals + their own +/- vs overall row average
-    let totalCellsByRow = '';
-    let avgRowCellsByRow = '';
-    rows.forEach(function(row, idx){
-      const total = rowTotals[idx];
-      const deltaG = total - rowAvgTarget;
-      const isWarn = Math.abs(deltaG) > TOLERANCE_G;
-      const deltaDisplay = (deltaG >= 0 ? '+' : '') + fmtDelta(fromGrams(deltaG));
-      totalCellsByRow += '<td>' + fmt(fromGrams(total)) + '</td>';
-      avgRowCellsByRow += '<td class="delta ' + (isWarn?'warn':'ok') + '">' + deltaDisplay + (isWarn?'<span class="flag">' + t().over + '</span>':'') + '</td>';
+    // Total row
+    var totalCells='';
+    for(var r=0;r<rc;r++){
+      var rt=fmt(fromG(rowTotals[r]));
+      totalCells+='<td title="'+t().colRow+' '+(r+1)+' sum = '+rt+'">'+rt+'</td>';
+    }
+    var grandTotal=fmt(fromG(overallSum));
+    body+='<tr class="total-row">'+
+      '<td>'+t().rowTotal+'</td>'+totalCells+
+      '<td title="Grand total">'+grandTotal+'</td><td>—</td><td>—</td></tr>';
+
+    // Average row
+    var avgCells='';
+    for(var r=0;r<rc;r++){
+      var ra=fmtD(fromG(rowTotals[r]/ps));
+      var rtF=fmt(fromG(rowTotals[r]));
+      avgCells+='<td title="'+rtF+' / '+ps+' = '+ra+'">'+ra+'</td>';
+    }
+    var overallAvgF=fmtD(fromG(overallAvg));
+    body+='<tr class="avg-row">'+
+      '<td>'+t().rowAverage+'</td>'+avgCells+
+      '<td title="'+grandTotal+' / '+hammers.length+'">'+overallAvgF+'</td><td>—</td><td>—</td></tr>';
+
+    // Row delta row (+/- vs avg for each row total)
+    var deltaCells='';
+    for(var r=0;r<rc;r++){
+      var d=rowTotals[r]-rowTarget;
+      var isW=Math.abs(d)>TOLERANCE_G;
+      var df=fmtSign(fromG(d));
+      var rtF=fmt(fromG(rowTotals[r]));
+      var tgtF=fmt(fromG(rowTarget));
+      deltaCells+='<td class="delta '+(isW?'warn':'ok')+'" title="'+rtF+' - '+tgtF+' = '+df+'">'+df+(isW?'<span class="flag">'+t().over+'</span>':'')+'</td>';
+    }
+    body+='<tr class="delta-row">'+
+      '<td>'+t().colDelta+'</td>'+deltaCells+
+      '<td>—</td><td>—</td><td>—</td></tr>';
+
+    // Opposite pairs table
+    var pairRows='';
+    oppPairs.forEach(function(pr){
+      var a=pr[0],b=pr[1];
+      var diff=Math.abs(rowTotals[a]-rowTotals[b]);
+      var isW=diff>TOLERANCE_G;
+      var diffF=fmtD(fromG(diff));
+      var tA=fmt(fromG(rowTotals[a])),tB=fmt(fromG(rowTotals[b]));
+      pairRows+='<tr><td>'+(a+1)+'</td><td>'+(b+1)+'</td>'+
+        '<td>'+tA+'</td><td>'+tB+'</td>'+
+        '<td class="delta '+(isW?'warn':'ok')+'" title="| '+tA+' - '+tB+' | = '+diffF+'">'+diffF+(isW?'<span class="flag">'+t().over+'</span>':'')+'</td></tr>';
     });
+    var oddNote=(state.rowCount%2!==0)?'<div class="method-note">'+t().oppositeNote3+'</div>':'';
 
-    const grandTotal = rowTotals.reduce(function(a,b){ return a+b; },0);
+    var allOk=flagCount===0&&maxPairDiff<=TOLERANCE_G;
 
-    bodyRows += '<tr class="total-row">' +
-      '<td>' + t().rowTotal + '</td>' + totalCellsByRow +
-      '<td>' + fmt(fromGrams(grandTotal)) + '</td>' +
-      '<td>—</td>' +
-      '<td>' + fmtDelta(fromGrams(overallAvg)) + '</td>' +
-      '</tr>';
-
-    bodyRows += '<tr class="avg-row">' +
-      '<td>' + t().colDelta + '</td>' + avgRowCellsByRow +
-      '<td>—</td>' +
-      '<td>—</td>' +
-      '<td>—</td>' +
-      '</tr>';
-
-    let maxPairDiff = 0;
-    let pairRowsHtml = '';
-    oppositePairs.forEach(function(p){
-      const a = p[0], b = p[1];
-      const diff = Math.abs(rowTotals[a]-rowTotals[b]);
-      maxPairDiff = Math.max(maxPairDiff, diff);
-      const isWarn = diff > TOLERANCE_G;
-      pairRowsHtml += '<tr>' +
-        '<td>' + (a+1) + '</td>' +
-        '<td>' + (b+1) + '</td>' +
-        '<td>' + fmt(fromGrams(rowTotals[a])) + '</td>' +
-        '<td>' + fmt(fromGrams(rowTotals[b])) + '</td>' +
-        '<td class="delta ' + (isWarn?'warn':'ok') + '">' + fmtDelta(fromGrams(diff)) + (isWarn?'<span class="flag">' + t().over + '</span>':'') + '</td>' +
-        '</tr>';
-    });
-
-    const oddNote = (state.rowCount % 2 !== 0) ? ('<div class="method-note">' + t().oppositeNote3 + '</div>') : '';
-
-    const overallStatus = flaggedRows === 0 && maxPairDiff <= TOLERANCE_G;
-
-    resultsArea.innerHTML =
-      '<div class="results-section">' +
-        '<h2>' + t().resultsHeading + '</h2>' +
-        '<div class="table-scroll"><table><thead><tr>' +
-          '<th>' + t().colHammerPos + '</th>' + headerCols +
-          '<th>' + t().colTotal + ' (' + state.unit + ')</th><th>' + t().colDelta + '</th><th>' + t().rowAverage + ' (' + state.unit + ')</th>' +
-        '</tr></thead><tbody>' + bodyRows + '</tbody></table></div>' +
-
-        '<div class="pairs-table-wrap">' +
-          '<h3>' + t().pairsHeading + '</h3>' +
-          '<div class="table-scroll"><table><thead><tr>' +
-            '<th>' + t().pairColA + '</th><th>' + t().pairColB + '</th>' +
-            '<th>' + t().pairColTotalA + ' (' + state.unit + ')</th><th>' + t().pairColTotalB + ' (' + state.unit + ')</th>' +
-            '<th>' + t().pairColDiff + '</th>' +
-          '</tr></thead><tbody>' + pairRowsHtml + '</tbody></table></div>' +
-          oddNote +
-        '</div>' +
-
-        '<div class="summary">' +
-          '<div class="card"><div class="label">' + t().cardPerHammerAvg + '</div><div class="value">' + fmtDelta(fromGrams(overallAvg)) + ' ' + state.unit + '</div></div>' +
-          '<div class="card"><div class="label">' + t().cardTargetTotal + '</div><div class="value">' + fmt(fromGrams(rowAvgTarget)) + ' ' + state.unit + '</div></div>' +
-          '<div class="card"><div class="label">' + t().cardTotalWeight + '</div><div class="value">' + fmt(fromGrams(overallSum)) + ' ' + state.unit + '</div></div>' +
-          '<div class="card ' + (maxAbsDelta>TOLERANCE_G?'status-warn':'status-ok') + '"><div class="label">' + t().cardMaxImbalance + '</div><div class="value">' + fmtDelta(fromGrams(maxAbsDelta)) + ' ' + state.unit + '</div></div>' +
-          '<div class="card ' + (maxPairDiff>TOLERANCE_G?'status-warn':'status-ok') + '"><div class="label">' + t().cardMaxPairDiff + '</div><div class="value">' + fmtDelta(fromGrams(maxPairDiff)) + ' ' + state.unit + '</div></div>' +
-          '<div class="card ' + (overallStatus?'status-ok':'status-warn') + '"><div class="label">' + t().cardStatus + '</div><div class="value">' + (overallStatus ? t().statusBalanced : t().statusOver(flaggedRows)) + '</div></div>' +
-        '</div>' +
-        '<div class="method-note">' + t().methodNote + '</div>' +
+    els['resultsArea'].innerHTML=
+      '<div class="results-section">'+
+        '<h2>'+t().resultsHeading+'</h2>'+
+        '<div class="table-scroll"><table><thead><tr>'+hdr+'</tr></thead><tbody>'+body+'</tbody></table></div>'+
+        '<div class="pairs-table-wrap"><h3>'+t().pairsHeading+'</h3>'+
+          '<div class="table-scroll"><table><thead><tr>'+
+            '<th>'+t().pairColA+'</th><th>'+t().pairColB+'</th>'+
+            '<th>'+t().pairColTotalA+' ('+state.unit+')</th><th>'+t().pairColTotalB+' ('+state.unit+')</th>'+
+            '<th>'+t().pairColDiff+'</th></tr></thead><tbody>'+pairRows+'</tbody></table></div>'+oddNote+'</div>'+
+        '<div class="summary">'+
+          '<div class="card"><div class="label">'+t().cardPerHammerAvg+'</div><div class="value">'+fmtD(fromG(overallAvg))+' '+state.unit+'</div></div>'+
+          '<div class="card"><div class="label">'+t().cardTargetTotal+'</div><div class="value">'+fmt(fromG(rowTarget))+' '+state.unit+'</div></div>'+
+          '<div class="card"><div class="label">'+t().cardTotalWeight+'</div><div class="value">'+fmt(fromG(overallSum))+' '+state.unit+'</div></div>'+
+          '<div class="card '+(maxRowDelta>TOLERANCE_G?'status-warn':'status-ok')+'"><div class="label">'+t().cardMaxRowDelta+'</div><div class="value">'+fmtD(fromG(maxRowDelta))+' '+state.unit+'</div></div>'+
+          '<div class="card '+(maxPosDelta>TOLERANCE_G?'status-warn':'status-ok')+'"><div class="label">'+t().cardMaxPosDelta+'</div><div class="value">'+fmtD(fromG(maxPosDelta))+' '+state.unit+'</div></div>'+
+          '<div class="card '+(maxPairDiff>TOLERANCE_G?'status-warn':'status-ok')+'"><div class="label">'+t().cardMaxPairDiff+'</div><div class="value">'+fmtD(fromG(maxPairDiff))+' '+state.unit+'</div></div>'+
+          '<div class="card '+(allOk?'status-ok':'status-warn')+'"><div class="label">'+t().cardStatus+'</div><div class="value">'+(allOk?t().statusBalanced:t().statusOver(flagCount))+'</div></div>'+
+        '</div>'+
+        '<div class="method-note">'+t().methodNote+'</div>'+
       '</div>';
   }
 
   function loadSample(){
-    const sample = [
-      69.1,69,69,68.9,68.9,68.8,68.7,68.7,68.4,69.0,68.6,68.9,
+    var s=[69.1,69,69,68.9,68.9,68.8,68.7,68.7,68.4,69.0,68.6,68.9,
       68.4,69,69,68.9,68.9,68.8,68.8,68.7,68.7,68.5,69.0,68.6,
       69,68.9,69,69,69,68.7,68.7,68.3,68.7,68.8,68.6,69.0,
-      68.9,69,68.4,69,68.7,68.7,69,68.8,68.7,68.6,68.9,68.5
-    ];
-    rowToggle.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
-    rowToggle.querySelector('[data-rows="4"]').classList.add('active');
-    state.rowCount = 4;
-    rowSizeInput.value = 12;
-    state.rowSize = 12;
-    weightInput.value = sample.join('\n');
-    updateNeeded();
-    calculate();
+      68.9,69,68.4,69,68.7,68.7,69,68.8,68.7,68.6,68.9,68.5];
+    els['rowToggle'].querySelectorAll('button').forEach(function(b){b.classList.remove('active');});
+    els['rowToggle'].querySelector('[data-rows="4"]').classList.add('active');
+    state.rowCount=4;els['rowSize'].value=12;state.rowSize=12;
+    els['weightInput'].value=s.join('\n');
+    updNeeded();calculate();
   }
 
-  rowToggle.addEventListener('click', function(e){
-    const btn = e.target.closest('button[data-rows]');
-    if(!btn) return;
-    rowToggle.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
+  els['rowToggle'].addEventListener('click',function(e){
+    var btn=e.target.closest('button[data-rows]');if(!btn)return;
+    els['rowToggle'].querySelectorAll('button').forEach(function(b){b.classList.remove('active');});
     btn.classList.add('active');
-    state.rowCount = parseInt(btn.dataset.rows,10);
-    updateNeeded();
+    state.rowCount=parseInt(btn.dataset.rows,10);updNeeded();
+  });
+  els['rowSize'].addEventListener('input',function(){
+    var v=parseInt(els['rowSize'].value,10);if(isNaN(v)||v<1)v=1;
+    state.rowSize=v;updNeeded();
+  });
+  els['unitSelect'].addEventListener('change',function(e){
+    state.unit=e.target.value;updBadge();showEmpty();
+  });
+  els['weightInput'].addEventListener('input',updCount);
+  els['langToggle'].addEventListener('click',function(e){
+    var btn=e.target.closest('button[data-lang]');if(!btn)return;
+    els['langToggle'].querySelectorAll('button').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');state.lang=btn.dataset.lang;
+    applyText();
+    if(els['resultsArea'].querySelector('.results-section'))calculate();else showEmpty();
+  });
+  els['calcBtn'].addEventListener('click',calculate);
+  els['sampleBtn'].addEventListener('click',loadSample);
+  els['clearBtn'].addEventListener('click',function(){
+    els['weightInput'].value='';updCount();showEmpty();
   });
 
-  rowSizeInput.addEventListener('input', function(){
-    let v = parseInt(rowSizeInput.value,10);
-    if(isNaN(v) || v < 1) v = 1;
-    state.rowSize = v;
-    updateNeeded();
-  });
-
-  unitSelect.addEventListener('change', function(e){
-    state.unit = e.target.value;
-    updateToleranceBadge();
-    showEmptyState();
-  });
-
-  weightInput.addEventListener('input', updateCountReadout);
-
-  langToggle.addEventListener('click', function(e){
-    const btn = e.target.closest('button[data-lang]');
-    if(!btn) return;
-    langToggle.querySelectorAll('button').forEach(function(b){ b.classList.remove('active'); });
-    btn.classList.add('active');
-    state.lang = btn.dataset.lang;
-    applyStaticText();
-    if(resultsArea.querySelector('.results-section')){
-      calculate();
-    } else {
-      showEmptyState();
-    }
-  });
-
-  document.getElementById('calcBtn').addEventListener('click', calculate);
-  document.getElementById('sampleBtn').addEventListener('click', loadSample);
-  document.getElementById('clearBtn').addEventListener('click', function(){
-    weightInput.value = '';
-    updateCountReadout();
-    showEmptyState();
-  });
-
-  applyStaticText();
-  updateNeeded();
+  applyText();updNeeded();
 })();
 </script>
 </body>
