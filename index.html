@@ -463,6 +463,7 @@
         return 'Entered ' + have + ' weight' + (have===1?'':'s') + ', but ' + rc + ' rows × ' + rs + ' hammers needs exactly ' + need + '. Add or remove values, or change the settings above.';
       },
       resultsHeading: 'Balance results — opposite rows optimized',
+      colHammerPos: 'Hammer position',
       colRow: 'Row',
       colH: function(i){ return 'H' + i; },
       colTotal: 'Total',
@@ -508,6 +509,7 @@
         return have + ' жин оруулсан байна, гэвч ' + rc + ' эгнээ × ' + rs + ' алхан нь яг ' + need + ' жин шаардана. Утгуудыг нэмэх, хасах, эсвэл дээрх тохиргоог өөрчилнө үү.';
       },
       resultsHeading: 'Тэнцвэрийн үр дүн — эсрэг эгнээнүүд оновчлогдсон',
+      colHammerPos: 'Алхны байрлал',
       colRow: 'Эгнээ',
       colH: function(i){ return 'А' + i; },
       colTotal: 'Нийт',
@@ -730,54 +732,70 @@
     let maxAbsDelta = 0;
     let flaggedRows = 0;
 
-    let headerCols = '';
-    for(let i=0;i<state.rowSize;i++){
-      headerCols += '<th>' + t().colH(i+1) + ' (' + state.unit + ')</th>';
-    }
-
-    let bodyRows = '';
+    // Compute row deltas (used for flag counts and summary cards, table itself is transposed below)
     rows.forEach(function(row, idx){
       const total = rowTotals[idx];
       const deltaG = total - rowAvgTarget;
       const isWarn = Math.abs(deltaG) > TOLERANCE_G;
       if(isWarn) flaggedRows++;
       maxAbsDelta = Math.max(maxAbsDelta, Math.abs(deltaG));
-      const deltaDisplay = (deltaG >= 0 ? '+' : '') + fmtDelta(fromGrams(deltaG));
-
-      let cells = '';
-      row.forEach(function(w){
-        cells += '<td class="hcell">' + fmt(fromGrams(w)) + '</td>';
-      });
-
-      bodyRows += '<tr>' +
-        '<td>' + (idx+1) + '</td>' +
-        cells +
-        '<td>' + fmt(fromGrams(total)) + '</td>' +
-        '<td class="delta ' + (isWarn?'warn':'ok') + '">' + deltaDisplay + (isWarn?'<span class="flag">' + t().over + '</span>':'') + '</td>' +
-        '</tr>';
     });
 
-    let colTotalCells = '';
-    let colAvgCells = '';
-    for(let c=0;c<state.rowSize;c++){
-      let colSum = 0;
-      rows.forEach(function(row){ colSum += row[c]; });
-      const colAvg = colSum / rows.length;
-      colTotalCells += '<td>' + fmt(fromGrams(colSum)) + '</td>';
-      colAvgCells += '<td>' + fmtDelta(fromGrams(colAvg)) + '</td>';
+    // Transposed table: page-rows = hammer positions H1..Hn, page-columns = crusher rows.
+    // Each crusher-row column also gets its own per-position average target so a
+    // +/- can be shown for that axis too (per-position average across all rows).
+    let headerCols = '';
+    for(let r=0;r<state.rowCount;r++){
+      headerCols += '<th>' + t().colRow + ' ' + (r+1) + ' (' + state.unit + ')</th>';
     }
 
-    const totalRowSum = rowTotals.reduce((a,b)=>a+b,0);
+    let bodyRows = '';
+    for(let h=0;h<state.rowSize;h++){
+      let posSum = 0;
+      for(let r=0;r<state.rowCount;r++){ posSum += rows[r][h]; }
+      const posAvg = posSum / state.rowCount;
+
+      let cells = '';
+      for(let r=0;r<state.rowCount;r++){
+        const w = rows[r][h];
+        const deltaPos = w - posAvg;
+        const isWarnPos = Math.abs(deltaPos) > TOLERANCE_G;
+        const deltaPosDisplay = (deltaPos >= 0 ? '+' : '') + fmtDelta(fromGrams(deltaPos));
+        cells += '<td class="hcell">' + fmt(fromGrams(w)) +
+          '<br><span class="delta ' + (isWarnPos?'warn':'ok') + '" style="font-weight:700;">' + deltaPosDisplay + (isWarnPos?'<span class="flag">' + t().over + '</span>':'') + '</span></td>';
+      }
+
+      bodyRows += '<tr>' +
+        '<td>' + t().colH(h+1) + '</td>' +
+        cells +
+        '<td>' + fmt(fromGrams(posSum)) + '</td>' +
+        '<td>' + fmtDelta(fromGrams(posAvg)) + '</td>' +
+        '</tr>';
+    }
+
+    // Row totals + their own +/- vs overall row average, shown as a footer row per crusher row
+    let totalCellsByRow = '';
+    let avgRowCellsByRow = '';
+    rows.forEach(function(row, idx){
+      const total = rowTotals[idx];
+      const deltaG = total - rowAvgTarget;
+      const isWarn = Math.abs(deltaG) > TOLERANCE_G;
+      const deltaDisplay = (deltaG >= 0 ? '+' : '') + fmtDelta(fromGrams(deltaG));
+      totalCellsByRow += '<td>' + fmt(fromGrams(total)) + '</td>';
+      avgRowCellsByRow += '<td class="delta ' + (isWarn?'warn':'ok') + '">' + deltaDisplay + (isWarn?'<span class="flag">' + t().over + '</span>':'') + '</td>';
+    });
+
+    const grandTotal = rowTotals.reduce((a,b)=>a+b,0);
 
     bodyRows += '<tr class="total-row">' +
-      '<td>' + t().rowTotal + '</td>' + colTotalCells +
-      '<td>' + fmt(fromGrams(totalRowSum)) + '</td>' +
+      '<td>' + t().rowTotal + '</td>' + totalCellsByRow +
+      '<td>' + fmt(fromGrams(grandTotal)) + '</td>' +
       '<td>—</td>' +
       '</tr>';
 
     bodyRows += '<tr class="avg-row">' +
-      '<td>' + t().rowAverage + '</td>' + colAvgCells +
-      '<td>' + fmtDelta(fromGrams(rowAvgTarget)) + '</td>' +
+      '<td>' + t().colDelta + '</td>' + avgRowCellsByRow +
+      '<td>—</td>' +
       '<td>—</td>' +
       '</tr>';
 
@@ -805,8 +823,8 @@
       '<div class="results-section">' +
         '<h2>' + t().resultsHeading + '</h2>' +
         '<div class="table-scroll"><table><thead><tr>' +
-          '<th>' + t().colRow + '</th>' + headerCols +
-          '<th>' + t().colTotal + ' (' + state.unit + ')</th><th>' + t().colDelta + '</th>' +
+          '<th>' + t().colHammerPos + '</th>' + headerCols +
+          '<th>' + t().colTotal + ' (' + state.unit + ')</th><th>' + t().rowAverage + ' (' + state.unit + ')</th>' +
         '</tr></thead><tbody>' + bodyRows + '</tbody></table></div>' +
 
         '<div class="pairs-table-wrap">' +
