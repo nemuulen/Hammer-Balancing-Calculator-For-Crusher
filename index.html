@@ -255,6 +255,11 @@
     color:var(--ink);
     font-weight:700;
   }
+  .hammer-id{
+    color:var(--gray);
+    font-weight:400;
+    font-size:11px;
+  }
   tbody tr:nth-child(even){background:#f5f5f5;}
   tbody tr.total-row td{
     background:#e6e6e6;
@@ -632,7 +637,7 @@
   }
 
   function rowSum(row){
-    return row.reduce((a,b)=>a+b,0);
+    return row.reduce(function(a,b){ return a + (typeof b === 'object' ? b.g : b); },0);
   }
 
   function optimizeBySwapping(rows, oppositePairs){
@@ -719,20 +724,23 @@
       return;
     }
 
-    const grams = parsed.map(toGrams).sort((a,b)=>b-a);
-    let rows = distributeZigzag(grams, state.rowCount);
+    // Build hammer objects carrying original entry index
+    const hammers = parsed.map(function(val, i){ return {g: toGrams(val), idx: i+1}; });
+    hammers.sort(function(a,b){ return b.g - a.g; });
+    let rows = distributeZigzag(hammers, state.rowCount);
     const oppositePairs = getOppositePairs(state.rowCount);
     rows = optimizeBySwapping(rows, oppositePairs);
 
     const rowTotals = rows.map(rowSum);
-    const overallSum = grams.reduce((a,b)=>a+b,0);
-    const overallAvg = overallSum / grams.length;
+    const allGrams = hammers.map(function(h){ return h.g; });
+    const overallSum = allGrams.reduce(function(a,b){ return a+b; },0);
+    const overallAvg = overallSum / hammers.length;
     const rowAvgTarget = overallAvg * state.rowSize;
 
     let maxAbsDelta = 0;
     let flaggedRows = 0;
 
-    // Compute row deltas (used for flag counts and summary cards, table itself is transposed below)
+    // Compute row deltas for summary cards
     rows.forEach(function(row, idx){
       const total = rowTotals[idx];
       const deltaG = total - rowAvgTarget;
@@ -742,38 +750,39 @@
     });
 
     // Transposed table: page-rows = hammer positions H1..Hn, page-columns = crusher rows.
-    // Each crusher-row column also gets its own per-position average target so a
-    // +/- can be shown for that axis too (per-position average across all rows).
+    // Each cell shows #originalIndex and weight. +/- column = position total - avg position total.
     let headerCols = '';
     for(let r=0;r<state.rowCount;r++){
       headerCols += '<th>' + t().colRow + ' ' + (r+1) + ' (' + state.unit + ')</th>';
     }
 
+    const avgPosTotal = overallSum / state.rowSize;
+
     let bodyRows = '';
     for(let h=0;h<state.rowSize;h++){
       let posSum = 0;
-      for(let r=0;r<state.rowCount;r++){ posSum += rows[r][h]; }
+      for(let r=0;r<state.rowCount;r++){ posSum += rows[r][h].g; }
       const posAvg = posSum / state.rowCount;
+      const posDelta = posSum - avgPosTotal;
+      const isPosWarn = Math.abs(posDelta) > TOLERANCE_G;
+      const posDeltaDisplay = (posDelta >= 0 ? '+' : '') + fmtDelta(fromGrams(posDelta));
 
       let cells = '';
       for(let r=0;r<state.rowCount;r++){
-        const w = rows[r][h];
-        const deltaPos = w - posAvg;
-        const isWarnPos = Math.abs(deltaPos) > TOLERANCE_G;
-        const deltaPosDisplay = (deltaPos >= 0 ? '+' : '') + fmtDelta(fromGrams(deltaPos));
-        cells += '<td class="hcell">' + fmt(fromGrams(w)) +
-          '<br><span class="delta ' + (isWarnPos?'warn':'ok') + '" style="font-weight:700;">' + deltaPosDisplay + (isWarnPos?'<span class="flag">' + t().over + '</span>':'') + '</span></td>';
+        const hObj = rows[r][h];
+        cells += '<td class="hcell"><span class="hammer-id">#' + hObj.idx + '</span> ' + fmt(fromGrams(hObj.g)) + '</td>';
       }
 
       bodyRows += '<tr>' +
         '<td>' + t().colH(h+1) + '</td>' +
         cells +
         '<td>' + fmt(fromGrams(posSum)) + '</td>' +
+        '<td class="delta ' + (isPosWarn?'warn':'ok') + '">' + posDeltaDisplay + (isPosWarn?'<span class="flag">' + t().over + '</span>':'') + '</td>' +
         '<td>' + fmtDelta(fromGrams(posAvg)) + '</td>' +
         '</tr>';
     }
 
-    // Row totals + their own +/- vs overall row average, shown as a footer row per crusher row
+    // Row totals + their own +/- vs overall row average
     let totalCellsByRow = '';
     let avgRowCellsByRow = '';
     rows.forEach(function(row, idx){
@@ -785,16 +794,18 @@
       avgRowCellsByRow += '<td class="delta ' + (isWarn?'warn':'ok') + '">' + deltaDisplay + (isWarn?'<span class="flag">' + t().over + '</span>':'') + '</td>';
     });
 
-    const grandTotal = rowTotals.reduce((a,b)=>a+b,0);
+    const grandTotal = rowTotals.reduce(function(a,b){ return a+b; },0);
 
     bodyRows += '<tr class="total-row">' +
       '<td>' + t().rowTotal + '</td>' + totalCellsByRow +
       '<td>' + fmt(fromGrams(grandTotal)) + '</td>' +
       '<td>—</td>' +
+      '<td>' + fmtDelta(fromGrams(overallAvg)) + '</td>' +
       '</tr>';
 
     bodyRows += '<tr class="avg-row">' +
       '<td>' + t().colDelta + '</td>' + avgRowCellsByRow +
+      '<td>—</td>' +
       '<td>—</td>' +
       '<td>—</td>' +
       '</tr>';
@@ -824,7 +835,7 @@
         '<h2>' + t().resultsHeading + '</h2>' +
         '<div class="table-scroll"><table><thead><tr>' +
           '<th>' + t().colHammerPos + '</th>' + headerCols +
-          '<th>' + t().colTotal + ' (' + state.unit + ')</th><th>' + t().rowAverage + ' (' + state.unit + ')</th>' +
+          '<th>' + t().colTotal + ' (' + state.unit + ')</th><th>' + t().colDelta + '</th><th>' + t().rowAverage + ' (' + state.unit + ')</th>' +
         '</tr></thead><tbody>' + bodyRows + '</tbody></table></div>' +
 
         '<div class="pairs-table-wrap">' +
